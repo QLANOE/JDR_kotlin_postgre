@@ -1,5 +1,7 @@
 package com.dd_kotlin.blog
 
+import com.dd_kotlin.blog.models.Acteur
+import com.dd_kotlin.blog.repositories.ActeurRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -21,27 +23,28 @@ class HtmlController(private val acteurRepository: ActeurRepository) {
     @GetMapping("/acteur/{login}")
     fun acteur(@PathVariable login: String, model: Model): String {
         val acteur = acteurRepository
-                .findByLogin(login)
-                ?.render()
-                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
+            .findByLogin(login)
+            ?.render()
+            ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "This user does not exist")
         model["title"] = acteur.login
         model["acteur"] = acteur
         return "acteur"
     }
 
     fun Acteur.render() = RenderedActeur(
-            login,
-            firstname,
-            lastname,
-            description
-    )
+        login,
+        firstname,
+        lastname,
+        password,
+        
+        )
 
 
     data class RenderedActeur(
-            val login: String,
-            val firstname: String,
-            val lastname: String,
-            val description: String?
+        val login: String,
+        val firstname: String,
+        val lastname: String,
+        val description: String?
     )
 
 }

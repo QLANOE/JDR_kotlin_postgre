@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS User (
   login                   VARCHAR      NOT NULL,
   firstname               VARCHAR      NOT NULL,
   lastname                VARCHAR      NOT NULL,
+  mail                    VARCHAR      NOT NULL,
   description             VARCHAR      NOT NULL
 );

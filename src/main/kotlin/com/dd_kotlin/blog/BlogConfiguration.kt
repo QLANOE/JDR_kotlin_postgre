@@ -1,5 +1,6 @@
 package com.dd_kotlin.blog
 
+import com.dd_kotlin.blog.repositories.ActeurRepository
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
