@@ -1,0 +1,14 @@
+{{> header}}
+
+<section class="article">
+    <header class="article-header">
+        <h1 class="article-title">{{user.login}}</h1>
+        <p class="article-meta">By <strong>{{user.firstname}} {{user.lastname}}</strong></p>
+    </header>
+
+    <div class="article-description">
+        {{user.description}}
+    </div>
+</section>
+
+{{> footer}}

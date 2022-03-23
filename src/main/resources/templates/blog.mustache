@@ -1,0 +1,17 @@
+{{> header}}
+
+<h1>{{title}}</h1>
+
+<div class="articles">
+
+    {{#acteurs}}
+        <section>
+            <header class="article-header">
+                <h2 class="article-title"><a href="/acteur/{{login}}">{{login}}</a></h2>
+                <div class="article-meta">By  <strong>{{firstname}} {{lastname}}</strong></div>
+            </header>
+        </section>
+    {{/acteurs}}
+</div>
+
+{{> footer}}
