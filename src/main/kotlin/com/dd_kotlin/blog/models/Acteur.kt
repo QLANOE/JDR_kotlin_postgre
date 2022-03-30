@@ -2,10 +2,7 @@ package com.dd_kotlin.blog.models
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Acteur {
@@ -32,7 +29,7 @@ class Acteur {
     var mail: String = ""
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
     fun comparePassword(password: String): Boolean {

@@ -49,7 +49,12 @@ class ActeurController(private val acteurService: ActeurService) {
 
         response.addCookie(cookie)
 
-        return ResponseEntity.ok(Message("sucess"))
+        var acteur = RegisterDTO()
+        acteur.name = user.firstname
+        acteur.email = user.mail
+
+
+        return ResponseEntity.ok(acteur)
 
     }
 
@@ -57,10 +62,6 @@ class ActeurController(private val acteurService: ActeurService) {
     fun acteur(@CookieValue("jwt") jwt: String?): ResponseEntity<Any> {
 
         try {
-            if (jwt == null) {
-                return ResponseEntity.status(401).body(Message("Non Identifié"))
-            }
-
             val body = Jwts.parser().setSigningKey("poivre").parseClaimsJws(jwt).body
 
             return ResponseEntity.ok(this.acteurService.getByID(body.issuer.toLong()))
